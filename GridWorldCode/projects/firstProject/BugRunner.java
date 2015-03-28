@@ -48,7 +48,7 @@ public class BugRunner
        // pawn p= new pawn(Color.RED);
 
        Human bl = new Human(Color.BLUE); //variable b is already used
-       AI r = new AI(bl, Color.RED);
+       AI r = new AI(bl, world, Color.RED);
        for(int i = 0; i < 8; i++)
        {
        	world.add(new Location(r.getSpawn().getRow()+1, i), r.getPawn(i));
@@ -72,7 +72,7 @@ public class BugRunner
        	world.add(new Location(bl.getSpawn().getRow()+1, bl.getSpawn().getCol()+4), bl.getQueen());
 		//world.add(new pawn());
 		bl.setMyCurrentLocation();
-		r.checkWin(world.runLoop(bl, r));
+		world.serializeGames(world.runLoop(bl, r));
         //r.takeTurn();
 		
     }

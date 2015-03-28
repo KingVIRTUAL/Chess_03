@@ -1,9 +1,10 @@
-//package info.gridworld.actor;
+ //package info.gridworld.actor;
 import info.gridworld.actor.ActorWorld;
 import info.gridworld.grid.Grid;
 import info.gridworld.grid.Location;
 import info.gridworld.world.World;
 
+import java.io.*;
 import java.util.ArrayList;
 
 import java.awt.Color;
@@ -11,9 +12,10 @@ import java.awt.Color;
 
 public class ChessWorld extends ActorWorld
 {
-	int clicks;
-	ChessPiece selected;
-	Grid g;
+	private ArrayList<ArrayList> games = new ArrayList<ArrayList>();
+	private int clicks;
+	private ChessPiece selected;
+	private Grid g;
     public ChessWorld()
     {
     }
@@ -23,6 +25,7 @@ public class ChessWorld extends ActorWorld
     	super(grid);
     	g = grid;
     	clicks = 0;
+    	
     }
 
     public boolean locationClicked(Location loc)
@@ -81,6 +84,7 @@ public class ChessWorld extends ActorWorld
 
         	else if(p1.checkMyTurnTaken())
         	{
+        		grids.add(getGrid());
         		if(p2.getKingLocation() == null)
         		{
         			setMessage("BLUE WINS!");
@@ -93,12 +97,64 @@ public class ChessWorld extends ActorWorld
         		}
         		else
         		{
-        			p2.takeTurn();
+        			p2.takeTurn(this);
         			grids.add(getGrid());
         		}
         	}
         	show();
         }
+    }
+    
+    public void addAGame(ArrayList game)
+    {
+    	games = deserializeGames();
+    	games.add(game);
+    	serializeGames(games);
+    }
+    
+    public void serializeGames(ArrayList theGames)
+    {
+    	try
+    	{
+    		FileOutputStream fileOut = new FileOutputStream("/tmp/game.ser");
+    		ObjectOutputStream out = new ObjectOutputStream(fileOut);
+    		         
+    		out.writeObject(theGames);
+    		out.close();
+    		fileOut.close();
+    	}
+    	catch(IOException i)
+    	{
+    		i.printStackTrace();
+    	}
+    }
+    
+    public ArrayList deserializeGames()
+    {
+    	ArrayList received = null;
+    	try
+    	{
+    		FileInputStream fileIn = new FileInputStream("tmp/games.ser");
+    		ObjectInputStream in = new ObjectInputStream(fileIn);
+    		received = (ArrayList) in.readObject();
+    		in.close();
+    		fileIn.close();
+    		
+    		games = (ArrayList) received;
+    		
+    		return games;
+    	}
+    	catch(IOException i)
+    	{
+    		i.printStackTrace();
+    		return null;
+    	}
+    	catch(ClassNotFoundException c)
+    	{
+    		System.out.println("Games not found");
+    		c.printStackTrace();
+    		return null;
+    	}	
     }
 
 

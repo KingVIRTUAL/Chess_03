@@ -7,7 +7,7 @@
 	<projects>
 		<project>
 			<label>Chess</label>
-			<showfiles>false</showfiles>
+			<showfiles>true</showfiles>
 			<folderitem>
 				<path>GridWorldCode</path>
 			</folderitem>
@@ -54,6 +54,9 @@
 				<path>GridWorldCode\javadoc\info\gridworld\world</path>
 			</folderitem>
 			<folderitem>
+				<path>GridWorldCode\javadoc\resources</path>
+			</folderitem>
+			<folderitem>
 				<path>GridWorldCode\projects</path>
 			</folderitem>
 			<folderitem>
@@ -65,26 +68,229 @@
 			<folderitem>
 				<path>GridWorldCode\projects\firstProject</path>
 			</folderitem>
+			<folderitem>
+				<path>.git</path>
+			</folderitem>
+			<folderitem>
+				<path>.git\branches</path>
+			</folderitem>
+			<folderitem>
+				<path>.git\hooks</path>
+			</folderitem>
+			<folderitem>
+				<path>.git\info</path>
+			</folderitem>
+			<folderitem>
+				<path>.git\logs</path>
+			</folderitem>
+			<folderitem>
+				<path>.git\logs\refs</path>
+			</folderitem>
+			<folderitem>
+				<path>.git\logs\refs\heads</path>
+			</folderitem>
+			<folderitem>
+				<path>.git\logs\refs\remotes</path>
+			</folderitem>
+			<folderitem>
+				<path>.git\logs\refs\remotes\origin</path>
+			</folderitem>
+			<folderitem>
+				<path>.git\objects</path>
+			</folderitem>
+			<folderitem>
+				<path>.git\objects\16</path>
+			</folderitem>
+			<folderitem>
+				<path>.git\objects\19</path>
+			</folderitem>
+			<folderitem>
+				<path>.git\objects\58</path>
+			</folderitem>
+			<folderitem>
+				<path>.git\objects\7d</path>
+			</folderitem>
+			<folderitem>
+				<path>.git\objects\bd</path>
+			</folderitem>
+			<folderitem>
+				<path>.git\objects\d9</path>
+			</folderitem>
+			<folderitem>
+				<path>.git\objects\info</path>
+			</folderitem>
+			<folderitem>
+				<path>.git\objects\pack</path>
+			</folderitem>
+			<folderitem>
+				<path>.git\refs</path>
+			</folderitem>
+			<folderitem>
+				<path>.git\refs\heads</path>
+			</folderitem>
+			<folderitem>
+				<path>.git\refs\remotes</path>
+			</folderitem>
+			<folderitem>
+				<path>.git\refs\remotes\origin</path>
+			</folderitem>
+			<folderitem>
+				<path>.git\refs\tags</path>
+			</folderitem>
+			<folderitem>
+				<path>Chess</path>
+			</folderitem>
+			<folderitem>
+				<path>Chess\GridWorldCode</path>
+			</folderitem>
+			<folderitem>
+				<path>Chess\GridWorldCode\framework</path>
+			</folderitem>
+			<folderitem>
+				<path>Chess\GridWorldCode\framework\info</path>
+			</folderitem>
+			<folderitem>
+				<path>Chess\GridWorldCode\framework\info\gridworld</path>
+			</folderitem>
+			<folderitem>
+				<path>Chess\GridWorldCode\framework\info\gridworld\actor</path>
+			</folderitem>
+			<folderitem>
+				<path>Chess\GridWorldCode\framework\info\gridworld\grid</path>
+			</folderitem>
+			<folderitem>
+				<path>Chess\GridWorldCode\framework\info\gridworld\gui</path>
+			</folderitem>
+			<folderitem>
+				<path>Chess\GridWorldCode\framework\info\gridworld\Players</path>
+			</folderitem>
+			<folderitem>
+				<path>Chess\GridWorldCode\framework\info\gridworld\world</path>
+			</folderitem>
+			<folderitem>
+				<path>Chess\GridWorldCode\javadoc</path>
+			</folderitem>
+			<folderitem>
+				<path>Chess\GridWorldCode\javadoc\info</path>
+			</folderitem>
+			<folderitem>
+				<path>Chess\GridWorldCode\javadoc\info\gridworld</path>
+			</folderitem>
+			<folderitem>
+				<path>Chess\GridWorldCode\javadoc\info\gridworld\actor</path>
+			</folderitem>
+			<folderitem>
+				<path>Chess\GridWorldCode\javadoc\info\gridworld\grid</path>
+			</folderitem>
+			<folderitem>
+				<path>Chess\GridWorldCode\javadoc\info\gridworld\world</path>
+			</folderitem>
+			<folderitem>
+				<path>Chess\GridWorldCode\javadoc\resources</path>
+			</folderitem>
+			<folderitem>
+				<path>Chess\GridWorldCode\projects</path>
+			</folderitem>
+			<folderitem>
+				<path>Chess\GridWorldCode\projects\boxBug</path>
+			</folderitem>
+			<folderitem>
+				<path>Chess\GridWorldCode\projects\critters</path>
+			</folderitem>
+			<folderitem>
+				<path>Chess\GridWorldCode\projects\firstProject</path>
+			</folderitem>
+			<folderitem>
+				<path>Chess\info</path>
+			</folderitem>
+			<folderitem>
+				<path>Chess\info\gridworld</path>
+			</folderitem>
+			<folderitem>
+				<path>Chess\info\gridworld\actor</path>
+			</folderitem>
+			<folderitem>
+				<path>Chess\info\gridworld\grid</path>
+			</folderitem>
+			<folderitem>
+				<path>Chess\info\gridworld\gui</path>
+			</folderitem>
+			<folderitem>
+				<path>Chess\info\gridworld\world</path>
+			</folderitem>
+			<folderitem>
+				<path>info</path>
+			</folderitem>
+			<folderitem>
+				<path>info\gridworld</path>
+			</folderitem>
+			<folderitem>
+				<path>info\gridworld\actor</path>
+			</folderitem>
+			<folderitem>
+				<path>info\gridworld\grid</path>
+			</folderitem>
+			<folderitem>
+				<path>info\gridworld\gui</path>
+			</folderitem>
+			<folderitem>
+				<path>info\gridworld\world</path>
+			</folderitem>
+			<folderitem>
+				<path>tmp</path>
+			</folderitem>
 		</project>
 	</projects>
 	<open_files>
 		<docitem>
-			<path>GridWorldCode\projects\firstProject\BugRunner.java</path>
+			<path>GridWorldCode\framework\info\gridworld\actor\ChessWorld.java</path>
 			<source>true</source>
 			<index>0</index>
 			<active>false</active>
 		</docitem>
 		<docitem>
-			<path>GridWorldCode\framework\info\gridworld\actor\ChessWorld.java</path>
+			<path>GridWorldCode\framework\info\gridworld\world\AI.java</path>
 			<source>true</source>
 			<index>1</index>
 			<active>false</active>
 		</docitem>
 		<docitem>
-			<path>GridWorldCode\framework\info\gridworld\world\AI.java</path>
+			<path>GridWorldCode\framework\info\gridworld\actor\ChessPiece.java</path>
 			<source>true</source>
 			<index>2</index>
+			<active>false</active>
+		</docitem>
+		<docitem>
+			<path>GridWorldCode\framework\info\gridworld\actor\pawn.java</path>
+			<source>true</source>
+			<index>3</index>
+			<active>false</active>
+		</docitem>
+		<docitem>
+			<path>GridWorldCode\projects\firstProject\BugRunner.java</path>
+			<source>true</source>
+			<index>4</index>
 			<active>true</active>
 		</docitem>
+		<docitem>
+			<path>GridWorldCode\framework\info\gridworld\grid\BoundedGrid.java</path>
+			<source>true</source>
+			<index>5</index>
+			<active>false</active>
+		</docitem>
+		<docitem>
+			<path>GridWorldCode\framework\info\gridworld\grid\Grid.java</path>
+			<source>true</source>
+			<index>6</index>
+			<active>false</active>
+		</docitem>
 	</open_files>
+	<build_files>
+		<builditem>
+			<path>Chess\GridWorldCode\build.xml</path>
+			<hidden>false</hidden>
+			<showtargets>true</showtargets>
+			<hidden_targets/>
+		</builditem>
+	</build_files>
 </workspace_user>

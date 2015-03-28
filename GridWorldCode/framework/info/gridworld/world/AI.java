@@ -9,11 +9,13 @@ import java.util.ArrayList;
 public class AI extends Player{
 	ArrayList currentEnemyLocations = new ArrayList<Location>();
 	ArrayList myCurrentLocations = new ArrayList<Location>();
-	public AI(Player opp, Color c)
+	ChessWorld world;
+	public AI(Player opp, ChessWorld theWorld, Color c)
 	{
 		super(c);
 		currentEnemyLocations = (ArrayList)getEnemyLocations(opp, getKing().getGrid());
 		myCurrentLocations = (ArrayList)getMyLocations();
+		world = theWorld;
 
 
 	}
@@ -110,7 +112,7 @@ public class AI extends Player{
 					if(endPieces.get(i) instanceof king)
 					{
 						king k = (king)endPieces.get(i);
-						if(k.getColor() == Color.RED)
+						if(k.getColor() == getColor())
 						{
 						return true;
 						}
@@ -118,157 +120,80 @@ public class AI extends Player{
 				}
 				return false;	
 	}
-
-
-	public void takeTurn() //move low-rank pieces to middle of grid. Move high-rank pieces to middle-sides
+	
+	public boolean isGridComparable(ArrayList games, Grid current)
 	{
-		    Random rand = new Random();
-		int n = rand.nextInt(6);
-		if(getPawns().size() > 0)
+		if(games != null)
 		{
-		
-			for(int i = 0; i < getPawns().size(); i++)
+			for(int i = 0; i < games.size(); i++)
 			{
-				int randomNum = rand.nextInt(getPawns().size()+1)%8;
-				if(getPawn(randomNum).getLocation().getRow() == 1)
+				ArrayList tempGame = (ArrayList)games.get(i);
+				for(int j = 0; j < tempGame.size(); j++)
 				{
-					getPawn(randomNum).move(2);
-					return;
+					Grid tempGrid = (Grid)tempGame.get(j);
+					if(current == tempGrid)
+					{
+						return true;
+					}
+					
+				}
+			}
+			return false;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+//	public boolean searchApplicableGame(ArrayList games, Grid current)
+//	{
+//		if(games != null)
+//	}
+	
+	public void smartMove()
+	{
+		
+	}
+	
+	public void dumbMove()
+	{
+		for(int i = 0; i < getMyPieces().size(); i++)
+		{
+			ChessPiece tempPiece = (ChessPiece) getMyPieces().get(i);
+			if(tempPiece.getValidMoves() != null)
+			{
+				if(world.getGrid().isValid((Location) tempPiece.getValidMoves().get(0)))
+				{
+				tempPiece.moveTo((Location)tempPiece.getValidMoves().get(0));
+				return;	
 				}
 			}
 		}
-		/*if(getPawnAttackable().size() > 0)
-		{
-		}
-		else if(getPawn(3).getLocation().getRow() == 1)
-		{
-			getPawn(3).move(2);
-			return;
-		}
-		else if(getPawn(4).getLocation().getRow() == 1)
-		{
-			getPawn(4).move(1);
-			return;
-		}*/
-		if(getKnight(0).getLocation().getRow() == 0)
-		{
-			getKnight(0).move(2, true);
-			return;
-		}
-		else if(getKnight(1).getLocation().getRow() == 0)
-		{
-			getKnight(1).move(2, false);
-			return;
-		}
+		return;
+	}
 
 
-		/*for(int i = 0; i < getPawns().size(); i++)
+	public void takeTurn(ChessWorld world) //move low-rank pieces to middle of grid. Move high-rank pieces to middle-sides
+	{
+	/*	if(world.deserializeGames() != null)
 		{
-			if(getPawn(i).getGrid().get(getPawn(i).getLocation().getAdjacentLocation(135)) instanceof ChessPiece)
-		{
-			ChessPiece c = (ChessPiece)getPawn(i).getGrid().get(getPawn(i).getLocation().getAdjacentLocation(135));
-			if(c.getColor() != getColor())
+			if(checkSmartMove(world.deserializeGames(), getKing().getGrid()))
 			{
-				getPawn(i).attack(true);
+				smartMove();
+				return;
+			}
+			else
+			{
+				dumbMove();
 				return;
 			}
 		}
-			else if(getPawn(i).getGrid().get(getPawn(i).getLocation().getAdjacentLocation(225)) instanceof ChessPiece)
-			{
-			ChessPiece c = (ChessPiece)getPawn(i).getGrid().get(getPawn(i).getLocation().getAdjacentLocation(135));
-			if(c.getColor() != getColor())
-			{
-				getPawn(i).attack(false);
-				return;
-			}
-			}
-		}
-
-		for(int i = 0; i < getMyPieces().size(); i++)
+		else
 		{
-			ChessPiece c = (ChessPiece)getMyPieces().get(i);
-			Location loc = c.getLocation();
-			ArrayList<Location> check = c.getGrid().getOccupiedAdjacentLocations(loc);
-			for(int j = 0; j < check.size(); j++)
-			{
-				if((Color)c.getGrid().get(check.get(j)).getColor() != getColor())
-				{
-					int dir = loc.getDirectionToward(check.get(j));
-
-					if(c instanceof pawn)
-					{
-
-					if(dir == 135 || dir == 225)
-					{
-						c.diagAttack((dir-45)/90);
-						return;
-					}
-
-					}
-
-					else if(c instanceof rook)
-					{
-
-					if(dir == 0 || dir == 90 || dir == 180 || dir == 270)
-					{
-						c.horizAttack(dir/90);
-						return;
-					}
-
-					}
-
-					else if(c instanceof bishop)
-					{
-
-					if(dir == 45 || dir == 135 || dir == 225 || dir == 315)
-					{
-						c.diagAttack((dir-45)/90);
-						return;
-					}
-
-					}
-
-					else if(c instanceof queen)
-					{
-
-					if(dir == 45 || dir == 135 || dir == 225 || dir == 315)
-					{
-						c.diagAttack((dir-45)/90);
-						return;
-					}
-
-					else if(dir == 0 || dir == 90 || dir == 180 || dir == 270)
-					{
-						c.horizAttack(dir/90);
-						return;
-					}
-
-					}
-
-					else if(c instanceof king)
-					{
-
-					if(dir == 45 || dir == 135 || dir == 225 || dir == 315)
-					{
-						c.diagAttack((dir-45)/90);
-						return;
-					}
-
-					else if(dir == 0 || dir == 90 || dir == 180 || dir == 270)
-					{
-						c.horizAttack(dir/90);
-						return;
-					}
-
-					}
-
-
-			}
-
-			//ArrayList<Location> check = (ArrayList)getMyPieces().get(i).getGrid().getOccupiedAdjacentLocations((Location)getMyPieces().get(i).getLocation);
-		}
+			dumbMove();
+			return;
 		}*/
-
 	}
 
 

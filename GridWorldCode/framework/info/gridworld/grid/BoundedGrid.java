@@ -18,7 +18,7 @@
  */
 
 package info.gridworld.grid;
-
+import java.io.*;
 import java.util.ArrayList;
 
 /**
@@ -26,7 +26,7 @@ import java.util.ArrayList;
  * rows and columns. <br />
  * The implementation of this class is testable on the AP CS AB exam.
  */
-public class BoundedGrid<E> extends AbstractGrid<E>
+public class BoundedGrid<E> extends AbstractGrid<E> implements Serializable
 {
     private Object[][] occupantArray; // the array storing the grid elements
 

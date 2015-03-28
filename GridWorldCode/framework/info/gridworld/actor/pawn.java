@@ -72,6 +72,24 @@ public class pawn extends ChessPiece{
     		return;
     	}
     }
+    
+    public void haveImoved()
+    {
+    	if(getColor() == Color.BLUE)
+    	{
+    		if(getLocation().getRow() != 6)
+    		{
+    			hasMoved = true;
+    		}
+    	}
+    	else
+    	{
+    		if(getLocation().getRow() != 1)
+    		{
+    			hasMoved = true;
+    		}
+    	}
+    }
 
 
     public void attack(boolean theDir)
@@ -102,33 +120,84 @@ public class pawn extends ChessPiece{
 
     	public ArrayList<Location> getValidMoves()
     	{
+    		haveImoved();
     		ArrayList<Location> Valid = new ArrayList<Location>();
     		ChessPiece temp = new ChessPiece();
-    		for(int i = 0; i < 6; i+=3)
+    		if(getColor() == Color.BLUE)
     		{
-    			if(getGrid().isValid(getDiagNext(i)))
+    			for(int i = 0; i < 6; i+=3)
     			{
-    				if(getGrid().get(getDiagNext(i)) instanceof ChessPiece)
+    				if(getGrid().isValid(getDiagNext(i)))
     				{
-    					temp = (ChessPiece)getGrid().get(getDiagNext(i));
-    					if(temp.getColor() != getColor())
+    					if(getGrid().get(getDiagNext(i)) instanceof ChessPiece)
     					{
-    						Valid.add(temp.getLocation());
+    						temp = (ChessPiece)getGrid().get(getDiagNext(i));
+    						if(temp.getColor() != getColor())
+    						{
+    							Valid.add(temp.getLocation());
+    						}
     					}
-    				}
-    			}	
-    		}
+    				}	
+    			}
     		
-    		if(hasMoved == false)
-    		{
-    			Valid.add(getHorizNext(getHorizNext(0), 0));
-    			Valid.add(getHorizNext(0));
-    			return Valid;
+    			if(hasMoved == false)
+    			{
+    				if(getGrid().get(getHorizNext(getHorizNext(0), 0)) == null)
+    				{
+    					Valid.add(getHorizNext(getHorizNext(0), 0));
+    				}
+    				if(getGrid().get(getHorizNext(0)) == null)
+    				{
+    					Valid.add(getHorizNext(0));
+    				}
+    				return Valid;
+    			}
+    			else
+    			{
+    				if(getGrid().get(getHorizNext(0)) == null)
+    				{
+    					Valid.add(getHorizNext(0));
+    				}
+    				return Valid;
+    			}
     		}
     		else
     		{
-    		Valid.add(getHorizNext(0));
-    			return Valid;
+    			for(int i = 1; i < 3; i++)
+    			{
+    				if(getGrid().isValid(getDiagNext(i)))
+    				{
+    					if(getGrid().get(getDiagNext(i)) instanceof ChessPiece)
+    					{
+    						temp = (ChessPiece)getGrid().get(getDiagNext(i));
+    						if(temp.getColor() != getColor())
+    						{
+    							Valid.add(temp.getLocation());
+    						}
+    					}
+    				}
+    			}
+    			
+    			if(hasMoved == false)
+    			{
+    				if(getGrid().get(getHorizNext(getHorizNext(2), 2)) == null)
+    				{
+    					Valid.add(getHorizNext(getHorizNext(2), 2));
+    				}
+    				if(getGrid().get(getHorizNext(2)) == null)
+    				{
+    					Valid.add(getHorizNext(2));
+    				}
+    				return Valid;
+    			}
+    			else
+    			{
+    			if(getGrid().get(getHorizNext(2)) == null)
+    				{
+    					Valid.add(getHorizNext(2));
+    				}
+    				return Valid;
+    			}
     		}
 			
 			
